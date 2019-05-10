@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 export default listItem = (props) => {
-    <View style={styles.listItem}>
+    return <View style={styles.listItem}>
         <Text>{props.placeName}</Text>
     </View>
 }
@@ -10,7 +10,7 @@ export default listItem = (props) => {
 const styles = StyleSheet.create({
     listItem: {
         width: '100%',
-        margin: 'bottom',
+        marginBottom: 10,
         padding: 10,
         backgroundColor: '#eee'
     }
