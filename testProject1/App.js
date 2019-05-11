@@ -9,9 +9,14 @@ export default class App extends Component {
   }
 
   onPlaceAdded = placeName => {
-
     let places = this.state.places
     places.push(placeName)
+
+    this.setState({ places })
+  }
+
+  deletePlaceHandler = index => {
+    let places = this.state.places.filter((place, i) => { return i !== index })
 
     this.setState({ places })
   }
@@ -20,7 +25,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <PlaceInput onPlaceAdded={this.onPlaceAdded} />
-        <PlaceList places={this.state.places}/> 
+        <PlaceList places={this.state.places} onItemPressed={this.deletePlaceHandler} />
       </View>
     );
   }
