@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import PlaceInput from './src/components/PlaceInput';
 import PlaceList from './src/components/PlaceList';
+import uuid from 'react-native-uuid'
 
 export default class App extends Component {
   state = {
@@ -10,13 +11,13 @@ export default class App extends Component {
 
   onPlaceAdded = placeName => {
     let places = this.state.places
-    places.push(placeName)
+    places.push({ key: uuid.v1(), value: placeName })
 
     this.setState({ places })
   }
 
   deletePlaceHandler = index => {
-    let places = this.state.places.filter((place, i) => { return i !== index })
+    let places = this.state.places.filter((place) => { return place.key !== index })
 
     this.setState({ places })
   }
